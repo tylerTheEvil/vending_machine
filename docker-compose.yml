@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+
+  test:
+    build: .
+    command: ["bundle", "exec", "rspec"]
+    volumes:
+      - .:/app
