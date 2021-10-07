@@ -13,4 +13,4 @@ VOLUME /usr/local/bundle
 
 ADD . $APP_HOME
 
-CMD rspec
+CMD ruby start.rb

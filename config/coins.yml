@@ -1,0 +1,13 @@
+coins:
+  - denomition: 5.00
+    count: 5
+  - denomition: 3.00
+    count: 5
+  - denomition: 2.00
+    count: 5
+  - denomition: 1.00
+    count: 5
+  - denomition: 0.50
+    count: 5
+  - denomition: 0.25
+    count: 5

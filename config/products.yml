@@ -1,0 +1,13 @@
+products:
+  - name: "Coca Cola"
+    price: 2.00
+    quantity: 2
+    slot: 1
+  - name: "Sprite"
+    price: 2.50
+    quantity: 2
+    slot: 2
+  - name: "Fanta"
+    price: 2.70
+    quantity: 3
+    slot: 3
