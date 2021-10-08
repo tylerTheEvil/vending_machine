@@ -3,13 +3,15 @@
 require_relative '../repositories/coin_stacks_repository'
 
 class VendingCalculator
-  def call(change)
-    all_coins = coin_stacks_repo.all_coins
-    calculate_change_coins(all_coins, change)
+  def call(change, coins)
+    result = calculate_change_coins(coins, change)
+    result.each do |new_stack|
+      coin_stacks_repo.remove_coin_from_stacks(new_stack, coins)
+    end
   end
 
   def calculate_change_coins(coins, change)
-    return empty_result if change == 0
+    return empty_result if change.zero?
 
     coins.each_with_index do |coin, index|
       remainder = change % coin.denomition
@@ -25,6 +27,7 @@ class VendingCalculator
       left_change = change - amount
       return matches if left_change.zero?
 
+      # Recursively call same method with rest of stacks and left change
       next_calculation = calculate_change_coins(coins[index + 1..-1], left_change)
       if next_calculation
         matches += next_calculation

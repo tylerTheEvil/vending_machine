@@ -6,8 +6,8 @@ require 'vending_machine'
 describe VendingCalculator do
   subject { described_class.new }
 
-  describe "calculate_change_coins" do
-    context "with full stack of coins" do
+  describe 'calculate_change_coins' do
+    context 'with full stack of coins' do
       let(:coins) do
         [
           CoinStack.new(10, 100),
@@ -17,7 +17,7 @@ describe VendingCalculator do
         ]
       end
 
-      it "returns 2 coins 10 and 5 as change of 15" do
+      it 'returns 2 coins 10 and 5 as change of 15' do
         result = subject.calculate_change_coins(coins, 15)
         expect(result.count).to eq(2)
         expect(result[0].denomition).to eq(10)
@@ -26,7 +26,7 @@ describe VendingCalculator do
         expect(result[1].count).to eq(1)
       end
 
-      it "returns 1 coins 1 as change of 1" do
+      it 'returns 1 coins 1 as change of 1' do
         result = subject.calculate_change_coins(coins, 1)
         expect(result.count).to eq(1)
         expect(result[0].denomition).to eq(1)
@@ -34,7 +34,7 @@ describe VendingCalculator do
       end
     end
 
-    context "with not full stack of coins" do
+    context 'with not full stack of coins' do
       let(:coins) do
         [
           CoinStack.new(10, 1),
@@ -44,7 +44,7 @@ describe VendingCalculator do
         ]
       end
 
-      it "returns 2 coins 10 and 5 as change of 20" do
+      it 'returns 2 coins 10 and 5 as change of 20' do
         result = subject.calculate_change_coins(coins, 20)
 
         expect(result.count).to eq(4)
@@ -53,7 +53,7 @@ describe VendingCalculator do
       end
     end
 
-    context "with a stack of only 1s" do
+    context 'with a stack of only 1s' do
       let(:coins) do
         [
           CoinStack.new(10, 0),
@@ -63,7 +63,7 @@ describe VendingCalculator do
         ]
       end
 
-      it "returns 2 coins 10 and 5 as change of 20" do
+      it 'returns 2 coins 10 and 5 as change of 20' do
         result = subject.calculate_change_coins(coins, 20)
 
         expect(result.count).to eq(1)
@@ -72,7 +72,7 @@ describe VendingCalculator do
       end
     end
 
-    context "with small amount of different coins" do
+    context 'with small amount of different coins' do
       let(:coins) do
         [
           CoinStack.new(50, 1),
@@ -83,16 +83,16 @@ describe VendingCalculator do
         ]
       end
 
-      it "returns 2 coins 10 and 5 as change of 98" do
+      it 'returns 2 coins 10 and 5 as change of 98' do
         result = subject.calculate_change_coins(coins, 98)
 
         expect(result.count).to eq(3)
         expect(result.map(&:denomition)).to match_array([50, 20, 1])
-        expect(result.map(&:count)).to eq([1, 2 , 8])
+        expect(result.map(&:count)).to eq([1, 2, 8])
       end
     end
 
-    context "no change needed" do
+    context 'no change needed' do
       let(:coins) do
         [
           CoinStack.new(5.0, 5),
@@ -104,7 +104,7 @@ describe VendingCalculator do
         ]
       end
 
-      it "returns empty result" do
+      it 'returns empty result' do
         result = subject.calculate_change_coins(coins, 0)
 
         expect(result.count).to eq(0)

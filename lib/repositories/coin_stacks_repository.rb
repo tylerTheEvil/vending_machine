@@ -8,7 +8,17 @@ class CoinStacksRepository
   end
 
   def new_stack(denomition, count)
-    CoinStack.new(denomition, count)
+    CoinStack.new(denomition, count.to_i)
+  end
+
+  def increment_coin_stack(denomition, stacks)
+    stack = stacks.find { |s| s.denomition == denomition.to_i }
+    stack.count += 1
+  end
+
+  def remove_coin_from_stacks(new_stack, stacks)
+    stack = stacks.find { |s| s.denomition == new_stack.denomition }
+    stack.count -= new_stack.count.to_i
   end
 
   private

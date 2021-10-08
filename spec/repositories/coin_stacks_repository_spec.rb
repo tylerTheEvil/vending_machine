@@ -33,4 +33,30 @@ describe CoinStacksRepository do
       expect(new_coin_stack.count).to eq(5)
     end
   end
+
+  describe '#increment_coin_stack' do
+    let(:coins) do
+      [
+        CoinStack.new(3, 2)
+      ] 
+    end
+
+    it 'increments available coins with same denomition' do
+      subject.increment_coin_stack(3, coins)
+      expect(coins.first.count).to eq(3)
+    end
+  end
+
+  describe '#remove_coin_from_stacks' do
+    let(:coins) do
+      [
+        CoinStack.new(3, 2)
+      ] 
+    end
+
+    it 'increments available coins with same denomition' do
+      subject.remove_coin_from_stacks(CoinStack.new(3, 1), coins)
+      expect(coins.first.count).to eq(1)
+    end
+  end
 end

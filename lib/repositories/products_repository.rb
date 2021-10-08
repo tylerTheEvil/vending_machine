@@ -12,7 +12,7 @@ class ProductsRepository
 
   def initialize_products
     raw_data[:products].map do |p|
-      Product.new(p[:name], p[:price], p[:slot])
+      Product.new(p[:name], p[:price], p[:quantity], p[:slot])
     end
   end
 
