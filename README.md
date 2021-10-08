@@ -39,3 +39,6 @@ docker-compose up test
 ```
 ### Standalone application
 To use it as standalone application without docker you will need to run `bundle install` in root directory and then run `ruby start.rb`.
+
+## TBD
+- Make rubocop happier;
