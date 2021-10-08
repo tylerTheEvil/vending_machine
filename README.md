@@ -39,7 +39,3 @@ docker-compose up test
 ```
 ### Standalone application
 To use it as standalone application without docker you will need to run `bundle install` in root directory and then run `ruby start.rb`.
-
-## TBD
-- It should notify the customer when the selected product is out of stock;
-- It should return inserted coins in case it does not have enough change.
