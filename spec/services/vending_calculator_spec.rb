@@ -110,5 +110,30 @@ describe VendingCalculator do
         expect(result.count).to eq(0)
       end
     end
+
+    context 'correct amount of coins' do
+      context 'change 9 with all coins available' do
+        let(:coins) do
+          [
+            CoinStack.new(5.0, 5),
+            CoinStack.new(3.0, 5),
+            CoinStack.new(2.0, 5),
+            CoinStack.new(1.0, 5),
+            CoinStack.new(0.5, 5),
+            CoinStack.new(0.25, 5)
+          ]
+        end
+
+        it 'returns 3 coins' do
+          result = subject.calculate_change_coins(coins, 9)
+          expect(result.count).to eq(3)
+        end
+
+        it 'returns 5, 3, 1 coins' do
+          result = subject.calculate_change_coins(coins, 9)
+          expect(result.map(&:denomition)).to match_array([5, 3, 1])
+        end
+      end
+    end
   end
 end

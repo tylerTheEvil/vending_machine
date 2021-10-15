@@ -4,6 +4,8 @@ require_relative '../repositories/coin_stacks_repository'
 
 class VendingCalculator
   def call(change, coins)
+    pp "before change"
+    pp coins
     result = calculate_change_coins(coins, change)
     result.each do |new_stack|
       coin_stacks_repo.remove_coin_from_stacks(new_stack, coins)
